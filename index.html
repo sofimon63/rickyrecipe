@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RickyRecipe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="home">
+<header><a href="/" aria-label="RickyRecipe home"><img class="logo" src="RickyRecipeLogo.svg" alt="RickyRecipe"></a></header>
+
+<main>
+  <h1>Find The Recipe That’s Right For <span>You</span>.</h1>
+
+  <div class="bar">
+    <form id="search" class="search" role="search">
+      <button type="submit" aria-label="Search"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="7"/><path d="M16 16l5 5"/></svg></button>
+      <input id="q" type="text" placeholder="Search a recipe or ingredient…" autocomplete="off">
+    </form>
+
+    <div class="filters">
+      <button class="pill" data-diet="vegetarian" aria-pressed="false">Vegetarian</button>
+      <button class="pill" data-diet="vegan" aria-pressed="false">Vegan</button>
+      <button class="pill" data-intol="gluten" aria-pressed="false">Gluten-Free</button>
+      <button class="pill" data-intol="dairy" aria-pressed="false">Dairy-Free</button>
+      <div class="more">
+        <button id="moreBtn" class="pill round" aria-label="Specific food filters" aria-expanded="false"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 8h16M7 12h10M10 16h4"/></svg></button>
+        <fieldset id="panel" hidden>
+          <legend>Specific Food Filters</legend>
+          <label><input type="checkbox" value="peanut"><i></i>Peanut-free</label>
+          <label><input type="checkbox" value="tree nut"><i></i>Nut-free</label>
+          <label><input type="checkbox" value="egg"><i></i>Egg-free</label>
+          <label><input type="checkbox" value="soy"><i></i>Soy-free</label>
+          <label><input type="checkbox" value="shellfish"><i></i>Shellfish-free</label>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+
+  <section id="results" hidden>
+    <p id="count" aria-live="polite"></p>
+    <div id="grid"></div>
+    <p id="msg"></p>
+    <button id="loadMore" class="pill" hidden>Load more</button>
+  </section>
+</main>
+
+<div id="modal" class="modal" hidden>
+  <article role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <img id="mImg" alt="">
+    <button id="mClose" aria-label="Close preview">×</button>
+    <div class="body">
+      <div class="head"><h2 id="mTitle"></h2><p id="mMeta"></p></div>
+      <h3>Ingredients</h3><ul id="mIng" class="cols"></ul>
+      <h3>Instructions</h3><ul id="mSteps"></ul>
+    </div>
+  </article>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
