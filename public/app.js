@@ -47,7 +47,7 @@ async function search(append = false) {
   try {
     const res = await fetch('/api/search?' + params);
     const data = await res.json().catch(() => {
-      throw new Error('Can’t reach the recipe server. Run npm start and open http://localhost:3000');
+      throw new Error('Unable to read API');
     });
     if (!res.ok) throw new Error(res.status === 402 ? 'Daily Spoonacular limit reached. Try again tomorrow.' : data.message || 'Search failed.');
     data.results.forEach(r => { state.recipes.set(r.id, r); $('#grid').append(card(r)); });
